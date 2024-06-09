@@ -1,0 +1,40 @@
+@startuml
+
+left to right direction
+
+actor "销售业客户" as SalesCustomer
+actor "平台运营商" as PlatformOperator
+
+rectangle "系统功能" {
+    usecase (注册用户) as UC1
+    usecase (用户登录) as UC2
+    usecase (创建订单) as UC3
+    usecase (上传数据) as UC4
+    usecase (管理用户) as UC5
+    usecase (管理订单) as UC6
+    usecase (管理数据) as UC7
+    usecase (系统运营维护) as UC8
+    usecase (查询订单) as UC9
+    
+    SalesCustomer --> UC1
+    SalesCustomer --> UC2
+    SalesCustomer --> UC3
+    SalesCustomer --> UC4
+    SalesCustomer --> UC9
+    
+    PlatformOperator --> UC5
+    PlatformOperator --> UC6
+    PlatformOperator --> UC7
+    PlatformOperator --> UC8
+    
+    UC1 --> UC2
+    UC2 --> UC3
+    UC3 --> UC4
+    UC3 --> UC9
+    UC5 --> UC6
+    UC5 --> UC7
+    UC8 --> UC5
+    UC8 --> UC7
+}
+
+@enduml
